@@ -1,0 +1,186 @@
+{
+  "dataset_name": "Jodhpur Urban Road Network Graph",
+  "geographic_perimeter": "Jodhpur Urban Service Area (OSM Way 31725312)",
+  "classification": "Jodhpur Urban Service Area (derived from OpenStreetMap Urban Settlement Footprint, Way 31725312; academic proxy for urban emergency simulation).",
+  "source": "OpenStreetMap",
+  "source_license": "Open Data Commons Open Database License (ODbL) 1.0",
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "retrieval_date": "2026-11-12T15:12:23.172379+00:00",
+  "coordinate_reference_system": "WGS84 (EPSG:4326)",
+  "weight_unit": "meters",
+  "statistics": {
+    "total_osm_ways_evaluated": 20349,
+    "total_osm_nodes_indexed": 59334,
+    "graph_nodes_count": 59334,
+    "directed_edges_count": 129778,
+    "bidirectional_road_pairs": 122152,
+    "oneway_directed_edges": 7626,
+    "total_road_length_km": 4192.11,
+    "highway_classification_distribution": {
+      "trunk": 1080,
+      "secondary": 2747,
+      "primary": 1288,
+      "tertiary": 7511,
+      "residential": 97519,
+      "unclassified": 4671,
+      "service": 14337,
+      "tertiary_link": 174,
+      "primary_link": 35,
+      "trunk_link": 40,
+      "living_street": 372,
+      "secondary_link": 4
+    },
+    "connected_components_count": 76,
+    "giant_component_nodes_count": 58877,
+    "giant_component_percentage": 99.23
+  },
+  "validation_summary": {
+    "referential_integrity": "100% PASSED (zero missing nodes)",
+    "invalid_coordinates": 0,
+    "zero_distance_edges": 0,
+    "duplicate_edges": 0,
+    "valid_geometry_percentage": 100.0,
+    "all_major_facilities_connected": true
+  },
+  "facility_snapping": {
+    "AIIMS Jodhpur": {
+      "node_id": 8520698362,
+      "snap_distance_meters": 19.7,
+      "coord": [
+        73.00679,
+        26.239941
+      ]
+    },
+    "MDM Hospital (Mathura Das Mathur)": {
+      "node_id": 5321319416,
+      "snap_distance_meters": 39.8,
+      "coord": [
+        73.009141,
+        26.266022
+      ]
+    },
+    "Mahatma Gandhi Hospital (MGH)": {
+      "node_id": 8499684813,
+      "snap_distance_meters": 42.8,
+      "coord": [
+        73.018564,
+        26.283129
+      ]
+    },
+    "Basni (RIICO Industrial Area)": {
+      "node_id": 2694302020,
+      "snap_distance_meters": 34.5,
+      "coord": [
+        73.010839,
+        26.223028
+      ]
+    },
+    "Sojati Gate (City Center Hub)": {
+      "node_id": 2688566058,
+      "snap_distance_meters": 7.3,
+      "coord": [
+        73.023983,
+        26.2886
+      ]
+    },
+    "Paota Circle (Northern Arterial Junction)": {
+      "node_id": 3773158752,
+      "snap_distance_meters": 41.5,
+      "coord": [
+        73.0425,
+        26.3012
+      ]
+    }
+  },
+  "pairwise_connectivity_samples": [
+    {
+      "from": "AIIMS Jodhpur",
+      "to": "MDM Hospital (Mathura Das Mathur)",
+      "reachable": true,
+      "edge_hops": 71,
+      "approx_distance_km": 5.23
+    },
+    {
+      "from": "AIIMS Jodhpur",
+      "to": "Mahatma Gandhi Hospital (MGH)",
+      "reachable": true,
+      "edge_hops": 143,
+      "approx_distance_km": 6.81
+    },
+    {
+      "from": "AIIMS Jodhpur",
+      "to": "Basni (RIICO Industrial Area)",
+      "reachable": true,
+      "edge_hops": 70,
+      "approx_distance_km": 2.79
+    },
+    {
+      "from": "AIIMS Jodhpur",
+      "to": "Sojati Gate (City Center Hub)",
+      "reachable": true,
+      "edge_hops": 179,
+      "approx_distance_km": 7.74
+    },
+    {
+      "from": "AIIMS Jodhpur",
+      "to": "Paota Circle (Northern Arterial Junction)",
+      "reachable": true,
+      "edge_hops": 247,
+      "approx_distance_km": 10.86
+    },
+    {
+      "from": "MDM Hospital (Mathura Das Mathur)",
+      "to": "AIIMS Jodhpur",
+      "reachable": true,
+      "edge_hops": 79,
+      "approx_distance_km": 5.25
+    },
+    {
+      "from": "MDM Hospital (Mathura Das Mathur)",
+      "to": "Mahatma Gandhi Hospital (MGH)",
+      "reachable": true,
+      "edge_hops": 77,
+      "approx_distance_km": 3.25
+    },
+    {
+      "from": "MDM Hospital (Mathura Das Mathur)",
+      "to": "Basni (RIICO Industrial Area)",
+      "reachable": true,
+      "edge_hops": 118,
+      "approx_distance_km": 6.89
+    },
+    {
+      "from": "MDM Hospital (Mathura Das Mathur)",
+      "to": "Sojati Gate (City Center Hub)",
+      "reachable": true,
+      "edge_hops": 109,
+      "approx_distance_km": 3.81
+    },
+    {
+      "from": "MDM Hospital (Mathura Das Mathur)",
+      "to": "Paota Circle (Northern Arterial Junction)",
+      "reachable": true,
+      "edge_hops": 180,
+      "approx_distance_km": 6.89
+    },
+    {
+      "from": "Mahatma Gandhi Hospital (MGH)",
+      "to": "AIIMS Jodhpur",
+      "reachable": true,
+      "edge_hops": 163,
+      "approx_distance_km": 8.39
+    },
+    {
+      "from": "Mahatma Gandhi Hospital (MGH)",
+      "to": "MDM Hospital (Mathura Das Mathur)",
+      "reachable": true,
+      "edge_hops": 85,
+      "approx_distance_km": 3.14
+    }
+  ],
+  "known_limitations": [
+    "Turn restrictions (e.g. no left turn on specific complex junctions) are modeled as segment traversals; complex restriction relations are not micro-simulated.",
+    "Live traffic congestion and dynamic construction closures are not modeled; edge weights represent static geographic distances.",
+    "Pedestrian pathways, stairways, and private unpaved tracks are excluded to ensure emergency vehicle compatibility."
+  ]
+}

@@ -17,8 +17,9 @@
 | **Process IPC** | Node `child_process` | Built-in | Invoking standalone C++ native binary via `stdin`/`stdout` JSON streaming. |
 | **Database** | MongoDB | Document Store | Persistent storage of user accounts, incident lifecycles, vehicle telemetry, and hospital capacities. |
 | **ODM** | Mongoose | Planned for DB Phase | Object Data Modeling with schema validation and `2dsphere` spatial indexing. |
-| **Core Algorithmic Engine**| C++17 | GCC / MinGW C++17 | Execution of graph traversals, Dijkstra shortest path, Min-Heap, and Multi-Criteria Priority Queues. |
-| **Build System (C++)** | CMake / Direct GCC CLI | CMake 3.10+ | Compiling C++ engine into a standalone, portable native executable. |
+| **Core Algorithmic Engine**| C++17 | GCC 16.2.0 (MSYS2 UCRT64 64-bit) | Graph traversals, Dijkstra shortest path, Min-Heap, and Multi-Criteria Priority Queues (`__cplusplus = 201703L`). |
+| **Build System (C++)** | CMake 4.4.5 / GNU Make 4.4.1 | MinGW Makefiles | Compiling C++ engine into a standalone native binary (`engine.exe`). |
+| **Spatial / GIS Data Engine** | OpenStreetMap / GeoJSON | WGS84 (EPSG:4326) / ODbL 1.0 | Authentic road network topology (59,334 nodes, 129,778 edges) and urban service area polygon (117.68 km²). |
 
 ---
 

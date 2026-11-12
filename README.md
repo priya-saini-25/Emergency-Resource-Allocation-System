@@ -164,9 +164,22 @@ g++ -std=c++17 -O2 src/main.cpp -o bin/engine.exe
 
 ---
 
-## 6. Compiler Compatibility Report
+## 6. Compiler & Environment Status (Phase 2 Update)
 
-- **Detected Compiler**: MinGW GCC 6.3.0 (`C:\MinGW\bin\g++.exe`).
-- **Standard Flag**: `-std=c++1z` / `-std=c++17` sets `__cplusplus` to `201500L` (draft C++17).
-- **Evaluation**: GCC 6.3.0 supports core C++14 and experimental C++17 features, compiling and executing the Phase 1 diagnostic binary.
-- **Recommendation for Future Algorithm Phases**: For complete modern C++17 STL support (including structured bindings `auto [a, b]`, complete `<filesystem>`, and modern variants), it is recommended to install a 64-bit GCC 11+ compiler (such as via [w64devkit](https://github.com/skeeto/w64devkit) or `winget install MSYS2.MSYS2`).
+- **Active Toolchain**: MSYS2 UCRT64 64-bit (`C:\msys64\ucrt64\bin`).
+- **Compiler**: GCC 16.2.0 (Rev6, Built by MSYS2 project).
+- **Build System**: CMake 4.4.5, GNU Make 4.4.1 (`mingw32-make`).
+- **Standard**: Finalized C++17 (`__cplusplus = 201703L`).
+- **Verified Features**: Structured bindings, `std::optional`, `std::filesystem`, and CMake MinGW Makefiles generator.
+- **Legacy Compiler**: MinGW.org GCC 6.3.0 is preserved at `C:\MinGW\bin` without conflict.
+
+---
+
+## 7. OpenStreetMap Attribution & Geographic Data License
+
+- **Data Source**: [OpenStreetMap](https://www.openstreetmap.org)
+- **Attribution**: © OpenStreetMap contributors
+- **License**: [Open Data Commons Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/)
+- **Geographic Coverage**: Jodhpur Urban Service Area (OSM Way `31725312`, 117.68 km²).
+- **Road Network Graph**: 59,334 nodes, 129,778 directed edges, 4,192.11 km total road length.
+- **Academic Classification**: Jodhpur Urban Service Area (derived from OpenStreetMap Urban Settlement Footprint, Way 31725312; academic proxy for urban emergency simulation). Not an officially notified municipal boundary.

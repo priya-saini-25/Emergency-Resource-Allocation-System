@@ -1,0 +1,53 @@
+{
+  "project_title": "Emergency Resource Allocation & Response Management System",
+  "geographic_scope": "Jodhpur, Rajasthan, India",
+  "classification": "Jodhpur Urban Service Area (derived from OpenStreetMap Urban Settlement Footprint, Way 31725312; academic proxy for urban emergency simulation).",
+  "statutory_disclaimer": "This dataset represents an academic urban settlement and road network proxy derived from OpenStreetMap. It is NOT an officially notified Jodhpur Municipal Corporation boundary, nor does it represent live traffic telematics.",
+  "source_attribution": "Map data © OpenStreetMap contributors",
+  "license": "Open Data Commons Open Database License (ODbL) 1.0 (https://opendatacommons.org/licenses/odbl/)",
+  "datasets": {
+    "boundary": {
+      "file": "cpp_engine/data/jodhpur_boundary.geojson",
+      "osm_id": 31725312,
+      "osm_type": "way",
+      "osm_tag": "place=city",
+      "geometry_type": "Polygon",
+      "vertices_count": 46,
+      "surface_area_km2": 117.68,
+      "bounding_box_wgs84": [72.9485753, 26.2059842, 73.0888716, 26.3536661]
+    },
+    "road_network_graph": {
+      "file": "cpp_engine/data/jodhpur_graph.json",
+      "total_nodes": 59334,
+      "total_directed_edges": 129778,
+      "total_network_km": 4192.11,
+      "bidirectional_pairs": 122152,
+      "oneway_edges": 7626,
+      "connected_components": 76,
+      "giant_component_nodes": 58877,
+      "giant_component_percentage": 99.23,
+      "all_major_facilities_connected": true
+    },
+    "road_segments_geojson": {
+      "file": "cpp_engine/data/jodhpur_roads.geojson",
+      "features_count": 68702,
+      "format": "GeoJSON FeatureCollection (LineString)"
+    }
+  },
+  "facility_graph_nodes": {
+    "AIIMS_Jodhpur": { "node_id": 8520698362, "coordinates": [73.006790, 26.239941], "snap_offset_m": 19.7 },
+    "MDM_Hospital": { "node_id": 5321319416, "coordinates": [73.009141, 26.266022], "snap_offset_m": 39.8 },
+    "Mahatma_Gandhi_Hospital": { "node_id": 8499684813, "coordinates": [73.018564, 26.283129], "snap_offset_m": 42.8 },
+    "Basni_RIICO_Area": { "node_id": 2694302020, "coordinates": [73.010839, 26.223028], "snap_offset_m": 34.5 },
+    "Sojati_Gate": { "node_id": 2688566058, "coordinates": [73.023983, 26.288600], "snap_offset_m": 7.3 },
+    "Paota_Circle": { "node_id": 3773158752, "coordinates": [73.042500, 26.301200], "snap_offset_m": 41.5 }
+  },
+  "processing_scripts": [
+    "cpp_engine/scripts/download_boundary.py",
+    "cpp_engine/scripts/validate_geojson.py",
+    "cpp_engine/scripts/download_roads.py",
+    "cpp_engine/scripts/build_graph.py",
+    "cpp_engine/scripts/validate_graph.py",
+    "cpp_engine/scripts/generate_road_ascii_map.py"
+  ]
+}
