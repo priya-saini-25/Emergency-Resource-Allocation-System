@@ -6,6 +6,26 @@ The system helps citizens report emergencies and enables control room operators 
 
 ---
 
+## Architecture Diagram
+             CITIZEN PORTAL
+                    |
+                    v
+              REACT FRONTEND
+                    |
+                    v
+             NODE.JS / EXPRESS
+                    |
+          +---------+---------+
+          |         |         |
+          v         v         v
+       MongoDB   C++ Engine  Notifications
+                    |
+             +------+------+
+             |      |      |
+             v      v      v
+          Dijkstra Priority Hospital
+           Route   Queue   Matching
+
 ## 📌 Project Overview
 
 Emergency situations require quick decision-making, efficient resource utilization, and coordination between emergency response teams.
