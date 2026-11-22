@@ -49,3 +49,30 @@ logs/
 
 # Raw OSM Extraction Cache
 cpp_engine/data/raw_osm_roads.json
+
+# Additional environment protection
+.env.*
+!.env.example
+
+# Temporary and cache files
+.cache/
+.tmp/
+temp/
+*.tmp
+*.bak
+__pycache__/
+.pytest_cache/
+
+# OS files
+Desktop.ini
+
+# Temporary investigation files
+scratch/
+
+# Screenshots and walkthrough videos
+docs/screenshots/
+
+docs/active_operations_hospital_display_verified.png
+
+# Database backups
+server/scripts/backups/

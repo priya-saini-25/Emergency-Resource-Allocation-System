@@ -1,39 +1,44 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
-import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
-
-dotenv.config();
+import { env } from './config/env.js';
+import healthRoutes from './routes/healthRoutes.js';
+import authRoutes from './routes/authRoutes.js';
+import incidentRoutes from './routes/incidentRoutes.js';
+import dispatchRoutes from './routes/dispatchRoutes.js';
+import resourceRoutes from './routes/resourceRoutes.js';
+import hospitalRoutes from './routes/hospitalRoutes.js';
+import locationRoutes from './routes/locationRoutes.js';
+import notificationRoutes from './routes/notificationRoutes.js';
+import { errorHandler } from './middleware/errorHandler.js';
+import { notFoundHandler } from './middleware/notFound.js';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
-// Core Middleware
-app.use(cors());
-app.use(express.json());
+// Security and CORS middleware
+app.use(cors({
+  origin: env.CORS_ORIGIN,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Request-ID', 'Idempotency-Key', 'idempotency-key']
+}));
 
-// Health Check Endpoint (Phase 1 Requirement)
-app.get('/api/health', (req, res) => {
-  res.status(200).json({
-    status: 'ONLINE',
-    service: 'Emergency Resource Allocation & Response Management API',
-    region: 'Jodhpur City, Rajasthan (Simulation)',
-    phase: 'Phase 1 - Initialization',
-    timestamp: new Date().toISOString(),
-    uptime: `${process.uptime().toFixed(2)} seconds`
-  });
-});
+// Body parser with 10MB limit (matching engine max buffer)
+app.use(express.json({ limit: '10mb' }));
 
-// 404 & Error Handling Middlewares
+// Mount Application Routes
+app.use(`${env.API_PREFIX}/health`, healthRoutes);
+app.use(`${env.API_PREFIX}/auth`, authRoutes);
+app.use(`${env.API_PREFIX}/incidents`, incidentRoutes);
+app.use(`${env.API_PREFIX}/dispatch`, dispatchRoutes);
+app.use(`${env.API_PREFIX}/resources`, resourceRoutes);
+app.use(`${env.API_PREFIX}/hospitals`, hospitalRoutes);
+app.use(`${env.API_PREFIX}/location`, locationRoutes);
+app.use(`${env.API_PREFIX}/notifications`, notificationRoutes);
+
+// Fallback 404 handler for unmatched routes
 app.use(notFoundHandler);
+
+// Centralized error handling middleware
 app.use(errorHandler);
 
-// Start Server
-if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
-    console.log(`[BACKEND] Emergency Management Server running on port ${PORT}`);
-    console.log(`[BACKEND] Health endpoint available at http://localhost:${PORT}/api/health`);
-  });
-}
-
+export { app };
 export default app;
