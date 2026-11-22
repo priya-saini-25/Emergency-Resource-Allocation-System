@@ -1,185 +1,309 @@
-# Emergency Resource Allocation & Response Management System
-## Geographic Scope: Jodhpur, Rajasthan, India
+# 🚨 Emergency Resource Allocation & Response Management System
 
-> **ACADEMIC PROTOTYPE DISCLAIMER**  
-> This project is a computer science engineering minor project developed solely for academic research, algorithm demonstration, and educational purposes. It is **NOT** connected to live municipal emergency services (108, 101, 100), actual government control rooms, real hospital capacity monitors, or live fleet GPS telemetry. All data is simulated for demonstration.
+A MERN Stack and C++17 based Emergency Resource Allocation and Response Management System designed for the Jodhpur urban area.
 
----
-
-## 1. Project Overview
-The **Emergency Resource Allocation & Response Management System** is a full-stack decision-support platform designed to simulate emergency triage, shortest-path road navigation, and optimal fleet dispatch for **Jodhpur, Rajasthan**.
-
-Citizens report emergencies with GPS or map coordinates, and central control room dispatchers verify incidents, receive algorithmic recommendations from a native **C++17 engine** (powered by Dijkstra's algorithm and Multi-Criteria Priority Queues), and coordinate responses across simulated ambulances, fire tenders, and hospitals.
+The system helps citizens report emergencies and enables control room operators to verify incidents, monitor emergency resources, and make intelligent dispatch decisions using graph algorithms and priority-based resource allocation.
 
 ---
 
-## 2. Six Architectural Principles
+## 📌 Project Overview
 
-1. **Authentic Jodhpur Geographic Boundary**: Uses official GeoJSON municipal boundary polygons with backend point-in-polygon validation instead of simplistic rectangular approximations.
-2. **Authentic Road Network**: Graph topology extracted from OpenStreetMap (OSM) for Jodhpur, modeling real road intersections, distances, and speed categories.
-3. **Explicit Multi-Criteria Priority Queue**: Triage urgency determined dynamically:
-   $$\text{Urgency Score} = 50\% \times \text{Severity} + 30\% \times \text{Victims} + 20\% \times \text{Waiting Time}$$
-4. **Compatible Resource Allocation**: Enforces vehicle compatibility (ALS/BLS, Fire, Rescue), capacity constraints, and atomic reservation to prevent duplicate dispatches.
-5. **Capacity-Aware Hospital Recommendation**: Selects hospitals by balancing road transit time against real-time simulated ICU and emergency bed availability.
-6. **Standardized Incident Lifecycle**: Strict state machine: `REPORTED` $\rightarrow$ `VERIFIED` $\rightarrow$ `ALLOCATED` $\rightarrow$ `DISPATCHED` $\rightarrow$ `ON_SCENE` $\rightarrow$ `RESOLVED` (plus `CANCELLED` / `REJECTED`).
+Emergency situations require quick decision-making, efficient resource utilization, and coordination between emergency response teams.
 
----
+This project aims to provide a centralized platform that connects citizens with emergency control room operators and supports efficient allocation of ambulances, fire engines, and rescue resources.
 
-## 3. Technology Stack
+The system uses a C++ decision engine to calculate optimal routes and generate resource allocation recommendations based on emergency priority, resource availability, and geographical distance.
 
-- **Frontend**: React 18, Vite, Tailwind CSS (Slate × Ice Blue theme tokens), Lucide React, React Leaflet (GIS phase).
-- **Backend**: Node.js (ES Modules), Express.js, REST APIs, Child Process IPC.
-- **Database**: MongoDB & Mongoose with `2dsphere` spatial indexing (Database phase).
-- **Core Algorithmic Engine**: C++17 native binary running Graph, Dijkstra's algorithm, Min-Heap, and Max-Heap Priority Queues.
-- **Design System**: Slate × Ice Blue enterprise dashboard theme.
+**Project Scope:** Jodhpur Urban Area  
+**Project Type:** Academic Minor Project  
+**Architecture:** MERN Stack + C++ Decision Engine
 
 ---
 
-## 4. Project Structure
+## ✨ Key Features
 
-```
+### 👤 Citizen Portal
+- User registration and authentication.
+- Report emergencies through an interactive map.
+- Search and select locations by name.
+- Submit emergency category, severity, and victim details.
+- Track reported incidents and their current status.
+- View incident details and response progress.
+
+### 🖥️ Control Room Dashboard
+- Centralized emergency monitoring dashboard.
+- View and manage incoming emergency reports.
+- Verify incidents through reporter call verification.
+- Monitor active emergency operations.
+- Track emergency resources and their availability.
+- View hospitals and their available facilities.
+- Review dispatch recommendations and allocate resources.
+- Receive notifications for important incident updates.
+
+### 🚑 Emergency Resource Management
+- Manage ambulances, fire engines, and rescue resources.
+- Track resource locations and operational status.
+- Consider resource availability during allocation.
+- Monitor dispatch, arrival, and incident resolution workflows.
+
+### 🧠 Intelligent C++ Decision Engine
+- Dijkstra's shortest path algorithm for route calculation.
+- Priority Queue for emergency prioritization.
+- Graph-based geographical route representation.
+- Spatial Grid for geographical lookup.
+- Resource allocation and dispatch recommendations.
+- Hospital matching based on requirements and capacity.
+- JSON-based communication between the backend and C++ engine.
+
+### 🔔 Notification System
+- Notify control room operators when a new emergency is reported.
+- Display notifications for incident verification.
+- Show resource allocation and dispatch updates.
+- Provide status updates throughout the incident lifecycle.
+
+### 🗺️ Interactive Mapping
+- Interactive maps using Leaflet and OpenStreetMap.
+- Location search and geographical visualization.
+- Display emergency incidents and available resources.
+- Visualize routes and dispatch information.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category | Technologies |
+|---|---|
+| Frontend | React.js, Vite, JavaScript |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Decision Engine | C++17 |
+| Algorithms | Dijkstra, Priority Queue, Graph Algorithms, Spatial Grid |
+| Mapping | Leaflet, OpenStreetMap |
+| API Communication | REST APIs, JSON |
+| Authentication | JWT |
+| Testing | Automated Frontend, Backend and C++ Tests |
+| Version Control | Git, GitHub |
+
+---
+
+## 🏗️ System Architecture
+
+The application follows a modular architecture in which the React frontend communicates with the Node.js backend through REST APIs.
+
+The backend manages authentication, incident workflows, resource management, hospital information, and dispatch execution.
+
+For intelligent dispatch recommendations, the backend communicates with an isolated C++17 decision engine using JSON over standard input/output.
+
+The system uses MongoDB for persistent data storage.
+
+### High-Level Workflow
+
+1. A citizen reports an emergency through the Citizen Portal.
+2. The backend validates and stores the incident.
+3. The control room receives the new incident notification.
+4. An operator verifies the emergency.
+5. The dispatch engine evaluates emergency priority and available resources.
+6. The C++ engine calculates route and allocation recommendations.
+7. The operator reviews and executes the dispatch.
+8. The system tracks resource arrival and incident status until resolution.
+
+---
+
+## 🧮 Core Algorithms
+
+| Algorithm / Data Structure | Purpose |
+|---|---|
+| Dijkstra's Algorithm | Calculate shortest paths in the road network |
+| Priority Queue | Prioritize emergency incidents |
+| Graph Data Structure | Represent geographical road networks |
+| Spatial Grid | Support efficient geographical lookups |
+| Resource Allocation Logic | Generate suitable resource allocation recommendations |
+| Hospital Matching | Match incidents with suitable hospitals |
+
+---
+
+## 📂 Project Structure
+
+```text
 Emergency-Resource-Allocation-System/
-├── client/                               # Frontend (React 18 + Vite + Tailwind CSS)
-│   ├── public/                           # Static assets
+│
+├── client/
 │   ├── src/
-│   │   ├── assets/                       # Custom SVG icons, branding
-│   │   ├── components/                   # Reusable UI components
-│   │   │   ├── common/                   # Shared buttons, badges, modals
-│   │   │   ├── layout/                   # Navbar, sidebar, headers
-│   │   │   └── map/                      # Leaflet map container & overlays
-│   │   ├── context/                      # React contexts
-│   │   ├── hooks/                        # Custom React hooks
-│   │   ├── pages/                        # Role-based route views
-│   │   │   ├── citizen/                  # Incident reporting & tracking
-│   │   │   ├── control-room/             # Dispatcher dashboard & queue
-│   │   │   ├── resources/                # Fleet management
-│   │   │   └── hospitals/                # Capacity monitoring
-│   │   ├── services/                     # API client services
-│   │   ├── styles/                       # Tailwind CSS & design tokens
-│   │   ├── utils/                        # Geospatial & helper utilities
-│   │   ├── App.jsx                       # Phase 1 verification view
-│   │   └── main.jsx                      # Client entry point
-│   ├── index.html
-│   ├── tailwind.config.js                # Slate × Ice Blue color tokens
-│   ├── vite.config.js
-│   └── package.json
+│   │   ├── components/
+│   │   ├── config/
+│   │   ├── context/
+│   │   ├── hooks/
+│   │   ├── layouts/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── styles/
+│   │   └── utils/
+│   └── tests/
 │
-├── server/                               # Backend (Node.js + Express)
+├── server/
+│   ├── scripts/
 │   ├── src/
-│   │   ├── config/                       # Environment & boundary configs
-│   │   ├── controllers/                  # Route business handlers
-│   │   ├── middleware/                   # Error handling & validation
-│   │   ├── models/                       # Mongoose database schemas
-│   │   ├── routes/                       # Express REST routes
-│   │   ├── services/                     # C++ process bridge & GIS
-│   │   ├── utils/                        # Loggers & formatters
-│   │   └── app.js                        # Server entry point & health check
-│   └── package.json
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   └── utils/
+│   └── tests/
 │
-├── cpp_engine/                           # Core Algorithmic Engine (C++17)
-│   ├── include/                          # Header files (Graph, Dijkstra, PQ)
+├── cpp_engine/
+│   ├── include/
 │   ├── src/
-│   │   └── main.cpp                      # Diagnostic entry point & IPC handler
-│   ├── tests/                            # Engine unit tests
-│   ├── data/                             # OSM road network data
-│   ├── bin/                              # Output binary folder
-│   └── CMakeLists.txt                    # C++17 build configuration
+│   ├── tests/
+│   └── CMakeLists.txt
 │
-├── docs/                                 # Architectural Documentation
-│   ├── ARCHITECTURE.md                   # Multi-tier design & IPC protocol
-│   ├── SYSTEM_WORKFLOW.md                # Incident lifecycle state transitions
-│   ├── TECH_STACK.md                     # Tech stack specifications
-│   └── DESIGN_SYSTEM.md                  # Slate × Ice Blue design system
+├── docs/
 │
-├── .gitignore                            # Git exclusion rules
-├── .env.example                          # Environment variables template
-└── README.md                             # Project documentation
+├── .env.example
+└── README.md
 ```
 
 ---
 
-## 5. Getting Started & Running the Project
+## ⚙️ Installation & Setup
 
 ### Prerequisites
-- **Node.js**: v18.0.0 or higher (Installed: `v24.11.0`)
-- **npm**: v9.0.0 or higher (Installed: `11.6.1`)
-- **Git**: Installed (`2.51.0`)
-- **C++ Compiler**: GCC with C++17 support (MinGW GCC or MSYS2 MinGW-w64)
 
----
+Install the following before running the project:
 
-### Step 1: Running the Backend Server
+- Node.js and npm
+- MongoDB (local instance or MongoDB Atlas)
+- C++17 compatible compiler
+- CMake
+- Git
+
+### 1. Clone the Repository
+
 ```bash
-# Navigate to the server folder
+git clone https://github.com/priya-saini-25/Emergency-Resource-Allocation-System.git
+```
+
+```bash
+cd Emergency-Resource-Allocation-System
+```
+
+### 2. Configure Environment Variables
+
+Create the required environment files using the provided examples.
+
+For the backend:
+
+```bash
 cd server
-
-# Install dependencies (already executed in Phase 1)
-npm install
-
-# Start the Express server
-npm start
 ```
-The backend starts on port **5000**.  
-Verify health by visiting: `http://localhost:5000/api/health`
 
----
+Copy `.env.example` to `.env` and configure the required environment variables.
 
-### Step 2: Running the Frontend Client
-In a separate terminal:
+For the frontend, configure its environment variables according to the client configuration.
+
+**Important:** Never commit actual credentials, database connection strings, JWT secrets, or private environment files.
+
+### 3. Install Backend Dependencies
+
 ```bash
-# Navigate to the client folder
+cd server
+npm install
+```
+
+Start the backend using the development script defined in `server/package.json`.
+
+### 4. Install Frontend Dependencies
+
+Open another terminal:
+
+```bash
 cd client
-
-# Install dependencies (already executed in Phase 1)
 npm install
-
-# Start Vite development server
-npm run dev
 ```
-The frontend starts at: `http://localhost:3000` (or `http://localhost:5173`)  
-Vite automatically proxies `/api/*` requests to the backend server at `http://localhost:5000`.
 
----
+Start the frontend using the development script defined in `client/package.json`.
 
-### Step 3: Compiling & Testing the C++ Algorithmic Engine
+### 5. Build the C++ Decision Engine
+
+Open a terminal in the project root:
+
 ```bash
-# Navigate to cpp_engine
 cd cpp_engine
-
-# Compile with g++
-g++ -std=c++17 -O2 src/main.cpp -o bin/engine.exe
-
-# Run the engine binary
-./bin/engine.exe
+cmake -S . -B build
+cmake --build build
 ```
-**Output (Standard JSON over stdout)**:
-```json
-{
-  "status": "INITIALIZED",
-  "engine": "Jodhpur Emergency Dispatch Engine",
-  "version": "1.0.0-phase1",
-  "cpp_standard": 201500
-}
-```
+
+Ensure the backend C++ engine configuration points to the generated executable.
 
 ---
 
-## 6. Compiler & Environment Status (Phase 2 Update)
+## 🧪 Testing
 
-- **Active Toolchain**: MSYS2 UCRT64 64-bit (`C:\msys64\ucrt64\bin`).
-- **Compiler**: GCC 16.2.0 (Rev6, Built by MSYS2 project).
-- **Build System**: CMake 4.4.5, GNU Make 4.4.1 (`mingw32-make`).
-- **Standard**: Finalized C++17 (`__cplusplus = 201703L`).
-- **Verified Features**: Structured bindings, `std::optional`, `std::filesystem`, and CMake MinGW Makefiles generator.
-- **Legacy Compiler**: MinGW.org GCC 6.3.0 is preserved at `C:\MinGW\bin` without conflict.
+The project contains automated tests across its major modules:
+
+- Frontend workflow tests.
+- Backend API and integration tests.
+- Authentication and authorization tests.
+- Incident lifecycle and dispatch tests.
+- Resource allocation and hospital matching tests.
+- C++ graph, routing, priority, and allocation tests.
+
+Run the relevant test scripts defined in each module's `package.json` and C++ build configuration.
 
 ---
 
-## 7. OpenStreetMap Attribution & Geographic Data License
+## 📚 Documentation
 
-- **Data Source**: [OpenStreetMap](https://www.openstreetmap.org)
-- **Attribution**: © OpenStreetMap contributors
-- **License**: [Open Data Commons Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/)
-- **Geographic Coverage**: Jodhpur Urban Service Area (OSM Way `31725312`, 117.68 km²).
-- **Road Network Graph**: 59,334 nodes, 129,778 directed edges, 4,192.11 km total road length.
-- **Academic Classification**: Jodhpur Urban Service Area (derived from OpenStreetMap Urban Settlement Footprint, Way 31725312; academic proxy for urban emergency simulation). Not an officially notified municipal boundary.
+Detailed technical documentation is available in the `docs/` directory.
+
+Some important documents include:
+
+- `API_REFERENCE.md` — Backend API documentation.
+- `BACKEND_ARCHITECTURE.md` — Backend architecture.
+- `CPP_ENGINE_INTEGRATION.md` — C++ engine integration.
+- `INCIDENT_LIFECYCLE.md` — Incident lifecycle.
+- `DISPATCH_RECOMMENDATION_API.md` — Dispatch recommendation workflow.
+- `AUTHENTICATION_AND_AUTHORIZATION.md` — Security and access control.
+- `PHASE_8_END_TO_END_ACCEPTANCE_REPORT.md` — End-to-end acceptance report.
+
+---
+
+## 🔐 Security & Scope
+
+- Environment variables are used for sensitive configuration.
+- Authentication and authorization protect application routes.
+- Backend APIs validate incoming requests.
+- The project is designed as an academic simulation and decision-support platform.
+
+**Disclaimer:** This system is an academic project and is not intended to replace real-world emergency response infrastructure or official emergency services.
+
+---
+
+## 🎯 Future Enhancements
+
+- Live GPS tracking of emergency response vehicles.
+- Real-time communication between operators and response teams.
+- Integration with verified emergency service providers.
+- Advanced traffic-aware route optimization.
+- Enhanced analytics and operational performance reports.
+- Mobile application for emergency reporting.
+
+---
+
+## 👩‍💻 Project Information
+
+**Project Name:** Emergency Resource Allocation & Response Management System
+
+**Technology:** MERN Stack + C++17
+
+**Geographical Focus:** Jodhpur Urban Area
+
+**Developed as:** Final-Year Academic Minor Project
+
+**GitHub Repository:**  
+https://github.com/priya-saini-25/Emergency-Resource-Allocation-System
+
+---
+
+⭐ If you find this project interesting, consider giving the repository a star!
